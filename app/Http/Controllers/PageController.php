@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;//clases de mi codigo
 use Illuminate\Http\Request;//clases laravel
+use App\Models\empresas;
 
 class PageController extends Controller
 {
     public function home(Request $request ){
         $search = $request->search;
-        $posts = Post::where('title', 'LIKE', "%{$search}%")
+        $empresas = empresas::where('title', 'LIKE', "%{$search}%")
             ->with('user')            
             ->latest()->paginate();
 
